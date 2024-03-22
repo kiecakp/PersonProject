@@ -12,6 +12,7 @@ public class Main {
         List<Person> list = Person.fromCsv("family.csv");
         for(Person person : list){
             System.out.println(person.name);
+
         }
     }
 }
