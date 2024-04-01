@@ -3,11 +3,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-// zad1
+// zad1.1
 public class Person {
     public String name;
     public LocalDate birthDate;
@@ -24,7 +26,7 @@ public class Person {
             person.deathDate = LocalDate.parse(splited[2], formatter);
         }
 
-// zad 5
+// zad 1.5
         person.parents = new ArrayList<>();
         for(int i = 3; i < splited.length; i++){
             Person parent = new Person();
@@ -34,7 +36,7 @@ public class Person {
         return person;
     }
 
-// zad 2
+// zad 1.2
     public static List<Person> fromCsv(String path){
         ArrayList<Person> list = new ArrayList<>();
 
@@ -45,9 +47,10 @@ public class Person {
             line = reader.readLine();           // linia z danymi
 
             while(line != null){
+                boolean cancelled = false;
                 Person person = fromCsvLine(line);
 
-// zad 3 && zad 4
+// zad 1.3 && zad 1.4
                 try{
                     person.checkDeathDate();
                     person.checkName(list);
@@ -55,7 +58,7 @@ public class Person {
                     System.out.println(e.getMessage());
                 }
 
-// zad 5
+// zad 1.5
                 for(int i = 0; i < person.parents.size(); i++){
                     for (Person person1 : list){
                         if(person.parents.get(i).name.equals(person1.name)){
@@ -64,13 +67,26 @@ public class Person {
                     }
                 }
 
-                list.add(person);
-
+// zad 1.6
+                try{
+                    person.checkParent();
+                } catch (ParentingAgeException e) {
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println(e.getMessage());
+                    String input = scanner.nextLine().trim();
+                    if(input.equals("Y")){
+                        list.add(person);
+                        cancelled = true;
+                    } else{
+                        cancelled = true;
+                    }
+                }
+                if(cancelled == false){
+                    list.add(person);
+                }
 
                 line = reader.readLine();
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -78,18 +94,30 @@ public class Person {
         return list;
     }
 
-// zad 3
+// zad 1.3
     public void checkDeathDate() throws NegativeLifespanException {
         if(deathDate != null && deathDate.isBefore(birthDate)){
             throw new NegativeLifespanException(this);
         }
     }
 
-// zad 4
+// zad 1.4
     public void checkName(List<Person> list) throws AmbiguousPersonException {
         for(Person person : list){
             if(person.name.equals(this.name)){
                 throw new AmbiguousPersonException(this);
+            }
+        }
+    }
+
+// zad 1.6
+    public void checkParent() throws ParentingAgeException{
+        for(Person parent : this.parents){
+            if(!parent.name.isEmpty() && parent.deathDate != null){
+                if((Period.between(parent.birthDate, parent.deathDate).getYears() < 15) ||
+                        (parent.deathDate.isBefore(this.birthDate))){
+                    throw new ParentingAgeException(parent);
+                }
             }
         }
     }
