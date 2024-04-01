@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -119,6 +116,34 @@ public class Person {
                     throw new ParentingAgeException(parent);
                 }
             }
+        }
+    }
+
+// zad 1.7
+    public static void toBinaryFile(List<Person> list){
+        File file = new File("binary.bin");
+        try(FileOutputStream fos = new FileOutputStream(file, false);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);){
+
+            for(Person person : list){
+                oos.writeObject(person);
+            }
+        } catch (IOException e) {
+            System.err.println("Cannot access: " + file.getName());
+        }
+    }
+
+    public static void fromBinaryFile(String file){
+
+        File file1 = new File(file);
+        try(FileInputStream fis = new FileInputStream(file1);
+            ObjectInputStream ois = new ObjectInputStream(fis);){
+
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

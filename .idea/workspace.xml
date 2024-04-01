@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a01e317d-1650-467a-a92b-581ee3fffe67" name="Changes" comment="home">
-      <change afterPath="$PROJECT_DIR$/src/ParentingAgeException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/family.csv" beforeDir="false" afterPath="$PROJECT_DIR$/family.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.java" afterDir="false" />
     </list>
@@ -25,6 +23,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "kiecakp"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="9f8c6760-48b1-4e2e-9fbc-9a48783ba5ca" />
+        <option name="url" value="https://github.com/kiecakp/PersonProject.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -76,7 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711150659739</updated>
       <workItem from="1711150660787" duration="410000" />
-      <workItem from="1711979067039" duration="20836000" />
+      <workItem from="1711979067039" duration="24219000" />
     </task>
     <task id="LOCAL-00001" summary="home">
       <option name="closed" value="true" />
@@ -110,7 +122,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711991396168</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="home">
+      <option name="closed" value="true" />
+      <created>1712005962441</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712005962441</updated>
+    </task>
+    <task id="LOCAL-00006" summary="home">
+      <option name="closed" value="true" />
+      <created>1712006139521</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712006139521</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

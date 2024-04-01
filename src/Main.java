@@ -15,13 +15,19 @@ public class Main {
 //        }
 
 //  ------ zad1.5 && zad1.6 ------
+//        List<Person> list = Person.fromCsv("family.csv");
+//        for(Person person : list){
+//            System.out.println(person.name);
+//            for(Person parent : person.parents){
+//                System.out.println("       " + parent.name);
+//                System.out.println("        " + parent.birthDate);
+//            }
+//        }
+
+//  ------ zad1.7 -------
         List<Person> list = Person.fromCsv("family.csv");
-        for(Person person : list){
-            System.out.println(person.name);
-            for(Person parent : person.parents){
-                System.out.println("       " + parent.name);
-                System.out.println("        " + parent.birthDate);
-            }
-        }
+        Person.toBinaryFile(list);
+
+
     }
 }
