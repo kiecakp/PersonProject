@@ -24,6 +24,7 @@ public class Person {
             person.deathDate = LocalDate.parse(splited[2], formatter);
         }
 
+
         return person;
     }
 
