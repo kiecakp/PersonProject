@@ -8,22 +8,28 @@ W kolejnych kolumnach pliku opisane są:
 5. imię rodzica (puste jeśli nieznany).
 
 Zadanie 1.1
-Napisz klasę Person, w której znajdować będą się dane odpowiadające wierszowi pliku. Na tym etapie pomiń wczytywanie rodziców. Napisz metodę wytwórczą fromCsvLine() klasy Person przyjmującą jako argument linię opisanego pliku.
+Napisz klasę Person, w której znajdować będą się dane odpowiadające wierszowi pliku. Na tym etapie pomiń wczytywanie rodziców.
+Napisz metodę wytwórczą fromCsvLine() klasy Person przyjmującą jako argument linię opisanego pliku.
 
 Zadanie 1.2
 Napisz metodę fromCsv(), która przyjmie ścieżkę do pliku i zwróci listę obiektów typu Person.
 
 Zadanie 1.3
-Napisz klasę NegativeLifespanException. Rzuć jej obiekt jako wyjątek, jeżeli data śmierci osoby jest wcześniejsza niż data urodzin. Wywołanie metody getMessage() powinno wyświetlić stosowną informację zawierającą przyczyny rzucenia wyjątku.
+Napisz klasę NegativeLifespanException. Rzuć jej obiekt jako wyjątek, jeżeli data śmierci osoby jest wcześniejsza niż data urodzin.
+Wywołanie metody getMessage() powinno wyświetlić stosowną informację zawierającą przyczyny rzucenia wyjątku.
 
 Zadanie 1.4
-Napisz klasę AmbiguousPersonException. Rzuć jej obiekt jako wyjątek, jeżeli w pliku pojawi się więcej niż jedna osoba o tym samym imieniu i nazwisku. Wywołanie metody getMessage() powinno wyświetlić stosowną informację zawierającą przyczyny rzucenia wyjątku.
+Napisz klasę AmbiguousPersonException. Rzuć jej obiekt jako wyjątek, jeżeli w pliku pojawi się więcej niż jedna osoba o tym samym
+imieniu i nazwisku. Wywołanie metody getMessage() powinno wyświetlić stosowną informację zawierającą przyczyny rzucenia wyjątku.
 
 Zadanie 1.5
-Niech rodzice będą przechowywani w klasie Person w postaci listy obiektów Person. Zmodyfikuj metodę fromCsv, by w obiektach dzieci ustawiała referencje do obiektów rodziców.
+Niech rodzice będą przechowywani w klasie Person w postaci listy obiektów Person. Zmodyfikuj metodę fromCsv, by w obiektach dzieci
+ustawiała referencje do obiektów rodziców.
 
 Zadanie 1.6
-Napisz klasę ParentingAgeException. Rzuć jej obiekt jako wyjątek, jeżeli rodzic jest młodszy niż 15 lat lub nie żyje w chwili narodzin dziecka. Przechwyć ten wyjątek tak, aby nie zablokował dodania takiej osoby, a jedynie poprosił użytkownika o potwierdzenie lub odrzucenie takiego przypadku za pomocą wpisania znaku “Y” ze standardowego wejścia.
+Napisz klasę ParentingAgeException. Rzuć jej obiekt jako wyjątek, jeżeli rodzic jest młodszy niż 15 lat lub nie żyje w chwili
+narodzin dziecka. Przechwyć ten wyjątek tak, aby nie zablokował dodania takiej osoby, a jedynie poprosił użytkownika o
+potwierdzenie lub odrzucenie takiego przypadku za pomocą wpisania znaku “Y” ze standardowego wejścia.
 
 Zadanie 1.7
 W klasie Person napisz statyczne metody toBinaryFile i fromBinaryFile, które zapiszą i odczytają listę osób do i z pliku binarnego.
