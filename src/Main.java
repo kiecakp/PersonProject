@@ -9,10 +9,19 @@ public class Main {
 //        System.out.println(person.deathDate);
 
 //  ------ zad2 && zad3 && zad4 -----
+//        List<Person> list = Person.fromCsv("family.csv");
+//        for(Person person : list){
+//            System.out.println(person.name);
+//        }
+
+//  ------ zad5 ------
         List<Person> list = Person.fromCsv("family.csv");
         for(Person person : list){
-            System.out.println(person.name);
+            for(Person parent : person.parents){
+                System.out.println(parent.name);
+                System.out.println(parent.birthDate);
 
+            }
         }
     }
 }

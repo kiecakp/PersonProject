@@ -24,7 +24,13 @@ public class Person {
             person.deathDate = LocalDate.parse(splited[2], formatter);
         }
 
-
+// zad 5
+        person.parents = new ArrayList<>();
+        for(int i = 3; i < splited.length; i++){
+            Person parent = new Person();
+            parent.name = splited[i];
+            person.parents.add(parent);
+        }
         return person;
     }
 
@@ -49,10 +55,18 @@ public class Person {
                     System.out.println(e.getMessage());
                 }
 
+// zad 5
+                for(int i = 0; i < person.parents.size(); i++){
+                    for (Person person1 : list){
+                        if(person.parents.get(i).name.equals(person1.name)){
+                            person.parents.set(i, person1);
+                        }
+                    }
+                }
+
                 list.add(person);
 
-// zad 5
-                list.get(list.size() - 1).parents = person.parents;         //???????????
+
                 line = reader.readLine();
             }
         } catch (FileNotFoundException e) {
