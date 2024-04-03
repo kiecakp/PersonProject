@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 // zad1.1
-public class Person {
+public class Person implements Serializable{
     public String name;
     public LocalDate birthDate;
     public LocalDate deathDate;
@@ -120,30 +120,33 @@ public class Person {
     }
 
 // zad 1.7
-    public static void toBinaryFile(List<Person> list){
-        File file = new File("binary.bin");
-        try(FileOutputStream fos = new FileOutputStream(file, false);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);){
+    public static void toBinaryFile(List<Person> list, String file){
+        try(FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos)){
 
             for(Person person : list){
                 oos.writeObject(person);
             }
         } catch (IOException e) {
-            System.err.println("Cannot access: " + file.getName());
+            System.err.println("Cannot access: " + file);
         }
     }
 
-    public static void fromBinaryFile(String file){
-
-        File file1 = new File(file);
-        try(FileInputStream fis = new FileInputStream(file1);
-            ObjectInputStream ois = new ObjectInputStream(fis);){
-
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+    public static List<Person> fromBinaryFile(String file){
+        List<Person> result = new ArrayList<>();
+        try(FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis)){
+            while(true){
+                try{
+                    result.add((Person) ois.readObject());
+                } catch (IOException e) {
+                    break;
+                }
+            }
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+        return result;
     }
 }
