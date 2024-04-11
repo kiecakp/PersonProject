@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 // zad1.1
 public class Person implements Serializable{
@@ -148,5 +150,65 @@ public class Person implements Serializable{
         }
 
         return result;
+    }
+
+// zad 2.2
+    public String toUML(){
+        StringBuilder objects = new StringBuilder();
+        StringBuilder relations = new StringBuilder();
+
+        // tworzenie funkcji LAMBDA ktora zamienia spacje na brak znaku
+        Function<String, String> replaceSpaces = str -> str.replaceAll(" ", "");
+
+        objects.append("object " + replaceSpaces.apply(name) + "\n");
+        for(Person parent : parents){
+            objects.append("object " + replaceSpaces.apply(parent.name) + "\n");
+            relations.append(replaceSpaces.apply(parent.name) + " --> " + replaceSpaces.apply(name) + "\n");
+        }
+
+        return String.format(
+                "@startuml\n%s\n%s\n@enduml",
+                objects, relations
+        );
+    }
+
+// zad 2.3
+    public static String toUML(List<Person> list){
+        StringBuilder objects = new StringBuilder();
+        StringBuilder relations = new StringBuilder();
+
+        // tworzenie funkcji LAMBDA ktora zamienia spacje na brak znaku
+        Function<String, String> replaceSpaces = str -> str.replaceAll(" ", "");
+
+        List<Person> notDouble = new ArrayList<>();
+        for(Person person : list){
+            objects.append("object " + replaceSpaces.apply(person.name) + "\n");
+            notDouble.add(person);
+
+            for(Person parent : person.parents){
+                if(!notDouble.contains(parent) && !parent.name.isEmpty()){
+                    objects.append("object " + replaceSpaces.apply(parent.name) + "\n");
+                    relations.append(replaceSpaces.apply(parent.name) + " --> " + replaceSpaces.apply(person.name) + "\n");
+                    continue;
+                }
+
+                if(!parent.name.isEmpty())
+                    relations.append(replaceSpaces.apply(parent.name) + " --> " + replaceSpaces.apply(person.name) + "\n");
+            }
+        }
+
+        return String.format(
+                "@startuml\n%s\n%s\n@enduml",
+                objects, relations
+        );
+    }
+
+// zad 2.4
+    public static List<Person> includeSubstring(List<Person> list, String substring){
+        List<Person> changed = list.stream()
+                .filter(name -> name.name.contains(substring))
+                .collect(Collectors.toList());
+
+        return changed;
     }
 }

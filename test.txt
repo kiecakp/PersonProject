@@ -1,0 +1,8 @@
+@startuml
+object JanKowalski
+object AnnaKowalska
+object krzys
+
+JanKowalski --> AnnaKowalska
+JanKowalski --> krzys
+@enduml
